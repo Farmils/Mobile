@@ -3,7 +3,19 @@
     <style name="Base.Theme.PokemonMobile" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <item name="popupMenuBackground">@color/PrimaryColorRed</item>
     </style>
-
+    <style name="PoPUpMenuStyle" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupMenuStyle">
+            @color/PrimaryColorRed
+        </item>
+    </style>
+<style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+    <item name="android:textSize">
+        14sp
+    </item>
+    <item name="android:fontFamily">@font/poppins</item>
+</style>
     <style name="Theme.PokemonMobile" parent="Base.Theme.PokemonMobile" />
+
 </resources>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screen.MainScreen"
     android:background="@color/PrimaryColorRed">
 
@@ -12,21 +13,60 @@
        android:orientation="vertical">
 
       <LinearLayout
+          android:layout_marginTop="16dp"
+          android:layout_marginStart="16dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal">
 
          <ImageView
-             android:layout_width="24.dp"
+             android:layout_marginTop="4dp"
+             android:layout_width="24dp"
              android:layout_height="24.dp"
              android:src="@drawable/pokeball">
-         </ImageView>
+             </ImageView>
 
          <TextView
+             android:layout_marginStart="16.dp"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Pokédex">
+             android:layout_gravity="center"
+             android:text="@string/pok_dex"
+             android:textAlignment="center"
+             android:textColor="@color/white"
+             android:textFontWeight="700"
+             android:textSize="24sp"
+             android:fontFamily="@font/poppins_bold">
+
          </TextView>
+      </LinearLayout>
+      <LinearLayout
+          android:layout_marginTop="8dp"
+          android:layout_marginStart="16dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+         <androidx.appcompat.widget.SearchView
+             app:iconifiedByDefault="false"
+             app:queryHint="@string/search"
+             android:layout_width="280dp"
+             android:layout_height="32dp"
+             android:theme="@style/SearchViewStyle"
+             android:background="@drawable/search_view_background"
+            app:searchIcon="@drawable/search"
+             app:searchHintIcon="@drawable/search"
+             app:queryBackground="@android:color/transparent"
+             app:closeIcon="@drawable/close">
+         </androidx.appcompat.widget.SearchView>
+         <ImageButton
+             android:id="@+id/changeMode"
+             android:layout_marginStart="16dp"
+             android:layout_width="32dp"
+             android:layout_height="32dp"
+             android:background="@drawable/search_view_background"
+             android:layout_gravity="center"
+             android:src="@drawable/vector">
+         </ImageButton>
       </LinearLayout>
    </LinearLayout>
 </FrameLayout>
