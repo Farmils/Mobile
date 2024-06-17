@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="PrimaryColorRed">#DC0A2D</color>
+    <color name="PokemonNum">#666666</color>
 </resources>

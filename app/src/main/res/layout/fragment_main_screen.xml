@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".screen.MainScreen"
+    tools:context=".UI.screen.MainScreen"
     android:background="@color/PrimaryColorRed">
 
    <LinearLayout
@@ -68,5 +68,21 @@
              android:src="@drawable/vector">
          </ImageButton>
       </LinearLayout>
+      <androidx.recyclerview.widget.RecyclerView
+         android:layout_marginHorizontal="4dp"
+         android:layout_marginTop="24dp"
+         android:layout_marginBottom="4dp"
+         tools:listitem="@layout/pokemon_item"
+         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+         android:paddingTop="24dp"
+          android:paddingHorizontal="12dp"
+         app:spanCount="3"
+         tools:itemCount="30"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+         android:background="@drawable/rounded_white_background"
+          android:layout_gravity="center_horizontal">
+
+      </androidx.recyclerview.widget.RecyclerView>
    </LinearLayout>
 </FrameLayout>

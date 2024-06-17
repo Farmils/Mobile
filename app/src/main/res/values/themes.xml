@@ -13,6 +13,7 @@
     <item name="android:fontFamily">@font/poppins</item>
 </style>
     <style name="RadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:checked"> false</item>
         <item name="android:drawableStart"> @drawable/ic_state_radio</item>
         <item name="android:drawablePadding">8dp</item>
         <item name="android:button">@null</item>
@@ -33,4 +34,9 @@
         <item name="android:windowMinWidthMinor">0dip</item>
 
     </style>
+    <style name="BodyCaption" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
 </resources>

@@ -8,4 +8,7 @@
     <string name="name">Name</string>
     <string name="sort_by">Sort by:</string>
     <string name="nameinSort">Name</string>
+    <string name="shimer999">Shimer999</string>
+    <string name="_999">#999</string>
+    <string name="pok_mon_name">Pokémon Name</string>
 </resources>
