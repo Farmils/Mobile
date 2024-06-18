@@ -47,6 +47,7 @@
           android:layout_height="wrap_content"
           android:orientation="horizontal">
          <androidx.appcompat.widget.SearchView
+             android:id="@+id/PokemonList"
              app:iconifiedByDefault="false"
              app:queryHint="@string/search"
              android:layout_width="280dp"
