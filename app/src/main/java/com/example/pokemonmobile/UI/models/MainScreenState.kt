@@ -1,6 +1,7 @@
 package com.example.pokemonmobile.UI.models
 
 import com.example.pokemonmobile.data.model.PokemonItemResponse
+import com.example.pokemonmobile.data.model.PokemonResponse
 
 data class MainScreenState(
     var isNumberSorted:Boolean= true,
@@ -8,5 +9,5 @@ data class MainScreenState(
     val isLoading:Boolean = false,
     val isError:Boolean=false,
     val searchText:String = "",
-    val pokemonList:List<PokemonItemResponse> = emptyList()
+    val pokemonList:List<PokemonResponse> = emptyList()
 )

@@ -11,4 +11,13 @@
     <string name="shimer999">Shimer999</string>
     <string name="_999">#999</string>
     <string name="pok_mon_name">Pokémon Name</string>
+    <string name="pok_monname">Pokémon Name</string>
+    <string name="s999">#999</string>
+    <string name="about">About</string>
+    <string name="weight">Weight</string>
+    <string name="_8_5_kg">8,5 kg</string>
+    <string name="height">Height</string>
+    <string name="_8_5_m">8,5 m</string>
+    <string name="_0_7_m">0.7 m</string>
+    <string name="base_stats">Base Stats</string>
 </resources>

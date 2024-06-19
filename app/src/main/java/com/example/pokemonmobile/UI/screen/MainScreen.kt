@@ -6,19 +6,19 @@ import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+
 import com.example.pokemonmobile.R
 import com.example.pokemonmobile.UI.adapters.PokemonAdapter
 import com.example.pokemonmobile.UI.models.MainScreenViewModel
 import com.example.pokemonmobile.databinding.FragmentMainScreenBinding
 import kotlinx.coroutines.launch
 
-
 @Suppress("UNREACHABLE_CODE")
 class MainScreen : Fragment(R.layout.fragment_main_screen) {
     private var mainScreenViewBinding: FragmentMainScreenBinding? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel:MainScreenViewModel by viewModels {MainScreenViewModel.Factory}
+        val viewModel: MainScreenViewModel by viewModels {MainScreenViewModel.Factory}
         mainScreenViewBinding = FragmentMainScreenBinding.bind(view)
         viewModel.getPokemons()
         lifecycleScope.launch {
@@ -30,8 +30,8 @@ class MainScreen : Fragment(R.layout.fragment_main_screen) {
                     setSortByName(view)
                 }
                 if (!it.pokemonList.isNullOrEmpty()){
-                    val adaptor = PokemonAdapter(it.pokemonList)
-                    mainScreenViewBinding?.PokemonList?.
+                    val adaptor = PokemonAdapter(it.pokemonList){}
+                    mainScreenViewBinding?.pokemonlist?.adapter = adaptor
                 }
             }
         }

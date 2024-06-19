@@ -70,19 +70,22 @@
          </ImageButton>
       </LinearLayout>
       <androidx.recyclerview.widget.RecyclerView
-         android:layout_marginHorizontal="4dp"
-         android:layout_marginTop="24dp"
-         android:layout_marginBottom="4dp"
-         tools:listitem="@layout/pokemon_item"
-         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-         android:paddingTop="24dp"
-          android:paddingHorizontal="12dp"
-         app:spanCount="3"
-         tools:itemCount="30"
+          android:id="@+id/pokemonlist"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-         android:background="@drawable/rounded_white_background"
-          android:layout_gravity="center_horizontal">
+          android:gravity="center"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginHorizontal="4dp"
+          android:layout_marginTop="24dp"
+          android:layout_marginBottom="4dp"
+          android:background="@drawable/rounded_white_background"
+          android:paddingStart="12dp"
+          android:paddingEnd="12dp"
+          android:paddingTop="24dp"
+          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          app:spanCount="3"
+          tools:itemCount="30"
+          tools:listitem="@layout/pokemon_item">
 
       </androidx.recyclerview.widget.RecyclerView>
    </LinearLayout>
