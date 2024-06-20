@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 
@@ -18,8 +19,9 @@ class MainScreen : Fragment(R.layout.fragment_main_screen) {
     private var mainScreenViewBinding: FragmentMainScreenBinding? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel: MainScreenViewModel by viewModels {MainScreenViewModel.Factory}
+        val viewModel: MainScreenViewModel by activityViewModels()
         mainScreenViewBinding = FragmentMainScreenBinding.bind(view)
+
         viewModel.getPokemons()
         lifecycleScope.launch {
             viewModel.stateMainScreen.collect {
@@ -30,15 +32,18 @@ class MainScreen : Fragment(R.layout.fragment_main_screen) {
                     setSortByName(view)
                 }
                 if (!it.pokemonList.isNullOrEmpty()){
-                    val adaptor = PokemonAdapter(it.pokemonList){}
+                    val adaptor = PokemonAdapter(it.pokemonList){
+                        viewModel.selectPokemon(R.color.white, it)
+                        viewModel.navigateToAboutScreen()
+                    }
                     mainScreenViewBinding?.pokemonlist?.adapter = adaptor
                 }
             }
         }
 
-            val dialog = ChangeStateFragmentDialog()
+
             mainScreenViewBinding?.changeMode?.setOnClickListener {
-                dialog.show(childFragmentManager, "ChangeState")
+               viewModel.showStateChangeDialog(childFragmentManager)
             }
         }
 

@@ -1,11 +1,21 @@
 package com.example.pokemonmobile.UI.models
 
+import android.app.Application
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
+import com.example.pokemonmobile.NavController
 import com.example.pokemonmobile.PokemonApplication
+import com.example.pokemonmobile.R
+import com.example.pokemonmobile.UI.screen.AboutScreen
+import com.example.pokemonmobile.UI.screen.ChangeStateFragmentDialog
 import com.example.pokemonmobile.UI.screen.MainScreen
 import com.example.pokemonmobile.data.model.PokemonItemResponse
 import com.example.pokemonmobile.data.model.PokemonItemsResponse
@@ -19,10 +29,17 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import okhttp3.internal.cache.CacheStrategy
 
-class MainScreenViewModel(private val repository: PokemonRepository):ViewModel() {
+class MainScreenViewModel(application: Application):AndroidViewModel(application  ) {
+    private val repository by lazy { (application as PokemonApplication).repository }
     private val _stateMainScreen = MutableStateFlow(MainScreenState())
     val stateMainScreen = _stateMainScreen.asStateFlow()
+    private var _fragmentManager:FragmentManager? = null
+private val _stateAboutScreen = MutableStateFlow(AboutScreenState())
+    val stateAboutScreen = _stateAboutScreen.asStateFlow()
 
+    fun selectPokemon(color:Int,pokemonResponse: PokemonResponse){
+        _stateAboutScreen.update {it.copy(color, pokemonResponse)  }
+    }
     fun changeStateSort(state: MainScreenStateSort) {
         when (state) {
             MainScreenStateSort.NAME -> {
@@ -39,6 +56,9 @@ class MainScreenViewModel(private val repository: PokemonRepository):ViewModel()
             }
         }
     }
+    fun setFragmentManager(fragmentManager: FragmentManager){
+        _fragmentManager = fragmentManager
+    }
     fun getPokemons(){
         _stateMainScreen.update { it.copy(isLoading = true) }
         viewModelScope.launch(Dispatchers.IO) {
@@ -52,13 +72,15 @@ class MainScreenViewModel(private val repository: PokemonRepository):ViewModel()
             }
         }
     }
-    companion object {
-        val Factory: ViewModelProvider.Factory = object :ViewModelProvider.Factory{
-            override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-                val application= checkNotNull(extras[APPLICATION_KEY])
-                return MainScreenViewModel((application as PokemonApplication).repository) as T
-            }
-        }
+    fun navigateToAboutScreen(){
+        _fragmentManager?.commit {
+            replace<AboutScreen>(R.id.host_fragment)
+                    }
     }
+    fun showStateChangeDialog(childFragmentManager:FragmentManager){
+        val dialog = ChangeStateFragmentDialog()
+       dialog.show(childFragmentManager,"StateChangeDialog")
+    }
+
 }
 

@@ -14,6 +14,7 @@ import android.widget.RadioGroup
 import android.widget.RadioGroup.OnCheckedChangeListener
 import androidx.appcompat.app.ActionBar.LayoutParams
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.pokemonmobile.R
@@ -30,7 +31,7 @@ private  var changeStateBinding: FragmentChangeStateDialogBinding? = null
             val builder = AlertDialog.Builder(it)
             builder.create()
         } ?: throw IllegalStateException()
-        val viewModel by viewModels<MainScreenViewModel>({requireParentFragment()})
+        val viewModel by activityViewModels<MainScreenViewModel>()
         val view = layoutInflater.inflate(R.layout.fragment_change_state_dialog, null)
         dialog.setView(view)
         changeStateBinding = FragmentChangeStateDialogBinding.bind(view)
