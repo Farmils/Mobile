@@ -16,7 +16,7 @@ import com.example.pokemonmobile.data.model.PokemonResponse
 class PokemonAdapter(private val pokemons: List<PokemonResponse>,
                      private val  onClickCard:(PokemonResponse)->Unit): RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View, private val  onClick: (PokemonResponse) -> Unit) : RecyclerView.ViewHolder(view) {
+    open class ViewHolder(view: View, private val  onClick: (PokemonResponse) -> Unit) : RecyclerView.ViewHolder(view) {
         val pokemonImage = view.findViewById<ImageView>(R.id.PokemonImage)
         val pokemonNumber = view.findViewById<TextView>(R.id.PokemonNumber)
         val pokemonName = view.findViewById<TextView>(R.id.PokemonName)

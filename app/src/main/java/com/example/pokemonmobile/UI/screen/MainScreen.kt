@@ -33,7 +33,7 @@ class MainScreen : Fragment(R.layout.fragment_main_screen) {
                 }
                 if (!it.pokemonList.isNullOrEmpty()){
                     val adaptor = PokemonAdapter(it.pokemonList){
-                        viewModel.selectPokemon(R.color.white, it)
+                        viewModel.selectPokemon( it)
                         viewModel.navigateToAboutScreen()
                     }
                     mainScreenViewBinding?.pokemonlist?.adapter = adaptor

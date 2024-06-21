@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.setFragmentManager(supportFragmentManager)
             supportFragmentManager.commit {
                 add<MainScreen>(R.id.host_fragment)
+
             }
             }
 

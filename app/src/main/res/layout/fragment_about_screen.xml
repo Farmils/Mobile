@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.screen.AboutScreen"
-    android:background="#74CB48">
+    android:background="@color/white"
+    android:id="@+id/MainLayout">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -67,14 +68,16 @@
         app:layout_constraintVertical_bias="1.0">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/PokemonType"
-            android:layout_width="match_parent"
+            android:id="@+id/TypeList"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <TextView
+            android:id="@+id/AboutPOkem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -233,6 +236,7 @@
             tools:text="There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger." />
 
         <TextView
+            android:id="@+id/BaseStats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -246,6 +250,7 @@
             android:orientation="horizontal">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/StatsItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -273,6 +278,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/PokeImage"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/image_3_"

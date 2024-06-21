@@ -37,8 +37,14 @@ class MainScreenViewModel(application: Application):AndroidViewModel(application
 private val _stateAboutScreen = MutableStateFlow(AboutScreenState())
     val stateAboutScreen = _stateAboutScreen.asStateFlow()
 
-    fun selectPokemon(color:Int,pokemonResponse: PokemonResponse){
-        _stateAboutScreen.update {it.copy(color, pokemonResponse)  }
+    fun selectPokemon(pokemonResponse: PokemonResponse){
+         val pokemonSpecies = repository.getSpeciesByName(pokemonResponse.name)
+        viewModelScope.launch {
+            pokemonSpecies.collect{resp ->
+                _stateAboutScreen.update { it.copy(color = resp.color.name,pokemonResponse=pokemonResponse) }
+            }
+        }
+
     }
     fun changeStateSort(state: MainScreenStateSort) {
         when (state) {
@@ -75,7 +81,8 @@ private val _stateAboutScreen = MutableStateFlow(AboutScreenState())
     fun navigateToAboutScreen(){
         _fragmentManager?.commit {
             replace<AboutScreen>(R.id.host_fragment)
-                    }
+            addToBackStack(null)
+        }
     }
     fun showStateChangeDialog(childFragmentManager:FragmentManager){
         val dialog = ChangeStateFragmentDialog()
